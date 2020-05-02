@@ -1,0 +1,106 @@
+.contract-details {
+  padding-top: calc(178px + 68px - 30px);
+  * {
+    overflow: hidden;
+  }
+  small {
+    @include respond-to(mobile) {
+      display:block;
+    }
+  }
+  .contract-header-bg {
+    background-image: url('./../../assets/images/c4.jpg');
+    background-size: cover;
+  }
+  .contract-header {
+    position: relative;
+    border-radius: 0 !important;
+    height: 178px;
+    padding: 0 42px;
+    background: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0;
+    border-bottom: 1px solid #e7e7e7;
+    box-shadow: none;
+    &.contract-navigation {
+      background: none;
+      height: 68px;
+      line-height: 68px;
+      box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+      .btn {
+        margin-right: 12px;
+      }
+    }
+    .contract-header-content {
+      position: relative;
+      @include vertical-centerer();
+      @include respond-to(mobile) {
+        text-align: center;
+        h3 {
+          margin-top:8px;
+        }
+      }
+      .image-container {
+        display: inline-block;
+        vertical-align: middle;
+        @include respond-to(mobile) {
+          display:block;
+          margin:0 auto;
+          text-align: center;
+        }
+        .contract-image {
+          height: 103px;
+          width: 103px;
+          background-color: black;
+          border-radius: 50%;
+          @include respond-to(mobile) {
+            height: 42px;
+            width: 42px;
+          }
+        }
+      }
+      .contract-name {
+        vertical-align: middle;
+        display: inline-block;
+        margin-left: 34px;
+        @include respond-to(mobile) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  .contract-print {
+    position: relative;
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom:21px;
+    > div {
+      height: 68px;
+      line-height: 93px;
+    }
+    h3 {
+      display: inline-block;
+      margin: 0;
+    }
+    .btn {
+      float: right;
+      transform: translate(0, 40%);
+      display: inline-block;
+    }
+  }
+  .contract-information {
+    .card-header {
+      h5 {
+        margin:0;
+      }
+    }
+    h5 {
+      display: inline-block;
+    }
+    * {
+      vertical-align: top;
+    }
+  }
+  td {
+    border-top:none !important;
+    border-bottom:1px solid #ebeef5 !important;
+  }
+}

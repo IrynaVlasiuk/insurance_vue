@@ -1,0 +1,49 @@
+.container-clear {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+html, body {
+  overflow-y: hidden;
+}
+
+.content {
+  position: relative;
+}
+
+.error-text {
+  color: $color-red;
+  position:relative;
+  top:-10px;
+  display: inline-block;
+}
+
+.form-group[aria-invalid='true'] {
+  input {
+    border: 1px solid $color-red !important;
+  }
+}
+
+.v-select[aria-invalid='true'] .dropdown-toggle {
+  border: none;
+  outline: none;
+}
+.form-group--error {
+  input {
+    border-color: red;
+  }
+  .select-primary.el-select .el-input input, .dropdown-toggle {
+    border-color: red !important;
+  }
+}
+.form-group .error {
+  color:red;
+  text-align: center;
+}
+
+

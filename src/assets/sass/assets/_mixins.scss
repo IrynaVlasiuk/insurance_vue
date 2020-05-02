@@ -1,0 +1,155 @@
+$mobile: 320px;
+$tablet: 320px;
+$small: 1024px;
+$medium: 1366px;
+$large: 1680px;
+
+@mixin respond-to($media) {
+  @if $media==mobile {
+    @media screen and (max-width: $small - 1) {
+      @content;
+    }
+    @media (min-device-width : 1024px) and (max-device-width : 1024px) and (min-device-height : 1366px) and (max-device-height : 1366px) and (min-width: 1024px) and (max-width: 1024px) {
+      @content;
+    }
+  }
+  @else if $media==mediumscreen {
+    @media screen and (min-width: $small) and (max-width: $large - 1) {
+      @content;
+    }
+  }
+  @else if $media==largescreen {
+    @media screen and (min-width: $large) {
+      @content;
+    }
+  }
+  @else if $media==ipad {
+    @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+      @content
+    }
+    @media (min-device-width : 1024px) and (max-device-width : 1024px) and (min-device-height : 1366px) and (max-device-height : 1366px) and (min-width: 1024px) and (max-width: 1024px) {
+      @content;
+    }
+  }
+}
+
+@mixin gradient-background() {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6d5efe+0,7393f9+50,56adf4+100 */
+  background: #6d5efe;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #6d5efe 0%, #7393f9 50%, #56adf4 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #6d5efe 0%, #7393f9 50%, #56adf4 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #6d5efe 0%, #7393f9 50%, #56adf4 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d5efe', endColorstr='#56adf4', GradientType=0);
+  /* IE6-9 */
+}
+
+@mixin gradient-background-set($color1, $color2, $color3) {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6d5efe+0,7393f9+50,56adf4+100 */
+  background: $color1;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, $color1 0%, $color2 50%, $color3 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $color1 0%, $color2 50%, $color3 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $color1 0%, $color2 50%, $color3 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+/*
+    Center element vertically and horizontally
+    Parent element should have position relative
+
+    usage : @include centerer;
+ */
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin vertical-centerer {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+/*
+Mixin to customize scrollbars
+Beware, this does not work in all browsers
+@author Hugo Giraudel
+@param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+@param {Color} $foreground-color - Scrollbar's color
+@param {Color} $background-color [mix($foreground-color, white, 50%)] - Scrollbar's color
+@example scss - Scrollbar styling
+@include scrollbars(.5em, slategray);
+*/
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+/*
+  Mixin used to keep element aspect ratio
+  https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/
+
+ */
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+/*
+  Function for converting PX to VW.
+  As a result, the function returns the pixel value from the width (1920px) of the window.
+
+  Usage: padding: fnW(16); //result: padding: 0.83333333vw
+
+ */
+@function fnW($val){
+  @return #{($val * 100) / 1920}vw;
+}
+
+/*
+  Function for converting PX to VH.
+  As a result, the function returns the pixel value from the height (1200px) of the window.
+
+  Usage: padding: fnH(16); //result: padding: 1.33333333vh
+
+ */
+@function fnH($val){
+  @return #{($val * 100) / 1200}vh;
+}
