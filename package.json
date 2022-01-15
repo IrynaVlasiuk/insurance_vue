@@ -61,7 +61,7 @@
     "http-proxy-middleware": "^0.19.1",
     "inject-loader": "^3.0.0",
     "lolex": "^1.5.2",
-    "marked": "^0.8.2",
+    "marked": "^4.0.10",
     "nightwatch": "^0.9.12",
     "node-sass": "^4.5.3",
     "opn": "^5.1.0",
